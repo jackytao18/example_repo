@@ -1,0 +1,48 @@
+---
+title: "Simple document"
+output: html_document
+---
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+
+I'm an R Markdown document! 
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r round(mean(samp),2)`.
+
+# Section 3
+
+This is ^going^ to make a plot! First I generate a dataframe, then use `ggplot` to make a scatterplot.
+
+```{r chunk_assessment 1, echo = FALSE, message=FALSE}
+plot_df = 
+  tibble(
+    rdm_samp = rnorm(500, mean = 1),
+    sign_rdm_samp = rdm_samp > 0,
+    abs_rdm_samp = abs(rdm_samp)
+  )
+
+ggplot(plot_df, aes(x = abs_rdm_samp)) + geom_histogram()
+
+median_samp = median(pull(plot_df, abs_rdm_samp))
+```
+The median of the variable containing absolute values is `r round(median_samp, 2)`
+
+* Mean `r mean(pull(plot_df, rdm_samp))`
+* Median `r median(pull(plot_df, rdm_samp))`
+* Standard Deviation `r sd(pull(plot_df, rdm_samp))`
