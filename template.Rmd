@@ -22,12 +22,10 @@ length(samp)
 
 # Section 2
 
-I can take the mean of the sample, too!
 The mean is `r round(mean(samp),2)`.
 
 # Section 3
 
-This is ^going^ to make a plot! First I generate a dataframe, then use `ggplot` to make a scatterplot.
 
 ```{r chunk_assessment 1, echo = FALSE, message=FALSE}
 plot_df = 
